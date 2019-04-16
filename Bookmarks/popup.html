@@ -1,15 +1,38 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <style>
-      body {
-        padding: 5px 10px 5px 10px;
-        text-align: center;
-        width:150px
-      }
+        body {
+            background-color: black;
+            padding: 5px 10px 5px 10px;
+            text-align: center;
+            width: 500px;
+        }
+        h2 {
+            color: white;
+        }
+        .title {
+            padding: 0;
+            list-style: none;
+            text-align: justify;
+        }
+        li {
+            margin-bottom: 15px;
+            color: white;
+            font-size: 14px;
+        }
+        .remove {
+            background-color: #720000;
+            color: white;
+            font-weight: bold;
+            margin-left: 15px;
+            padding: 5px;
+        }
     </style>
-  </head>
-    <h2 id="bookmarks"></h2>
-    <script src="js/popup.js"></script>
-  </body>
+</head>
+<h2 id="bookmarks"></h2>
+<hr>
+<ul id="title" class="title"></ul>
+<script src="js/popup.js"></script>
+</body>
 </html>

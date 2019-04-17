@@ -1,15 +1,22 @@
 /**
  * Popup interaction
  */
-chrome.storage.sync.get('bookmarks', data => {
+chrome.storage.local.get('bookmarks', data => {
   fillContent(data)
+
+  chrome.storage.onChanged.addListener(() => {
+    const counter = --data.bookmarks.count
+    let contentTabs = document.querySelector('#bookmarks');
+    contentTabs.innerHTML = `Bookmarks: ${counter}`;
+  })
 });
 
-const removeBookMark = (id) => {
+
+const removeBookMark = id => {
   document.querySelectorAll('.remove').forEach((item) => {
     item.addEventListener('click', () => {
-      chrome.bookmarks.remove(id);
       if (id === item.getAttribute('data-id')) {
+        chrome.bookmarks.remove(id);
         item.parentElement.remove();
       }
     })

@@ -13,11 +13,11 @@ chrome.runtime.onInstalled.addListener(() => {
 });
 
 const updateBookmarks = () => {
-  chrome.bookmarks.getTree(bookmarks => {
-    chrome.storage.sync.set({
+  chrome.bookmarks.getTree(bookmarksTree => {
+    chrome.storage.local.set({
       bookmarks: {
-        count: bookmarks[0].children[0].children.length,
-        title: bookmarks[0].children[0].children
+        count: bookmarksTree[0].children[0].children.length,
+        title: bookmarksTree[0].children[0].children
       }
     })
   });

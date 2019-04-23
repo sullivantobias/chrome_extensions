@@ -9,43 +9,43 @@ class Bookmarks {
 
   listeners() {
     chrome.storage.local.get('bookmarks', data => {
-      this.fillContent(data)
+      this.fillContent(data);
       this.redirect();
 
       chrome.storage.onChanged.addListener((item) => {
-        const counter = --data.bookmarks.count
+        const counter = --data.bookmarks.count;
         let contentTabs = document.querySelector('#bookmarks');
         contentTabs.innerHTML = `Bookmarks: ${counter}`;
       })
     });
   }
 
-  fillContent (data) {
+  fillContent(data) {
     let contentTabs = document.querySelector('#bookmarks');
     let title = document.querySelector('#title');
     contentTabs.innerHTML = `Bookmarks: ${data.bookmarks.count}`;
-  
-    for (let test in data.bookmarks.title) {
+
+    for (let element in data.bookmarks.title) {
       const li = document.createElement('li');
       const remove = document.createElement('button');
       const target = document.createElement('button');
-      target.setAttribute('data-redirect', data.bookmarks.title[test].url)
+      target.setAttribute('data-redirect', data.bookmarks.title[element].url)
       remove.classList.add('remove');
       remove.innerHTML = 'Remove';
       target.classList.add('browse');
       target.innerHTML = 'Browse';
-      remove.setAttribute('data-id', data.bookmarks.title[test].id);
-      li.innerText = data.bookmarks.title[test].title;
+      remove.setAttribute('data-id', data.bookmarks.title[element].id);
+      li.innerText = data.bookmarks.title[element].title;
       title.appendChild(li);
       li.appendChild(target);
       li.appendChild(remove);
-  
-      this.removeBookMark(data.bookmarks.title[test].id);
+
+      this.removeBookMark(data.bookmarks.title[element].id);
     }
-  
+
   };
 
-  removeBookMark (id) {
+  removeBookMark(id) {
     document.querySelectorAll('.remove').forEach((item) => {
       item.addEventListener('click', () => {
         if (id === item.getAttribute('data-id')) {
@@ -56,7 +56,7 @@ class Bookmarks {
     });
   };
 
-  redirect () {
+  redirect() {
     document.querySelectorAll('.browse').forEach((item) => {
       item.addEventListener('click', () => {
         window.open(item.getAttribute('data-redirect'), '_blank');

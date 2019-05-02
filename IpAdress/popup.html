@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            background-color: black;
+            padding: 5px 10px 5px 10px;
+            text-align: center;
+            width: auto;
+        }
+
+        table {
+            width: auto;
+            border-collapse: collapse;
+            margin: 50px auto;
+        }
+
+        th {
+            background: #3498db;
+            color: white;
+            font-weight: bold;
+        }
+
+        td, th {
+            color: white;
+            padding: 10px;
+            border: 1px solid #ccc;
+            text-align: left;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<table>
+    <tr>
+        <th>Ip Adress</th>
+        <td id="query" data-column="Ip Adress"></td>
+    </tr>
+    <tr>
+        <th>Country</th>
+        <td id="country" data-column="Country"></td>
+    </tr>
+    <tr>
+        <th>Region</th>
+        <td id="regionName" data-column="region"></td>
+    </tr>
+    <tr>
+        <th>City</th>
+        <td id="city" data-column="city"></td>
+    </tr>
+</table>
+<script src="js/popup.js"></script>
+</body>
+</html>
